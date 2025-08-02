@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import path from "path";
 
 dotenv.config();
 
@@ -32,8 +33,7 @@ const qrScannerApi = require('./modules/qrscanner/registration.route');
 app.use('/api/qrscanner', qrScannerApi);
 
 
-
-app.use("/uploads", express.static(__dirname + "/uploads"));
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 app.listen(app.get("port"), () => {
   console.log(
